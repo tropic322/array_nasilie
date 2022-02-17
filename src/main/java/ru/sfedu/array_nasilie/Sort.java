@@ -18,7 +18,7 @@ public class Sort {
         if (arr[j] <= pivot) {
             wall++;
 
-            int swapTemp = arr[wall];//если число меньше опорного, то меняем 
+            int swapTemp = arr[wall];// 
             arr[wall] = arr[j];
             arr[j] = swapTemp;
         }
@@ -33,7 +33,13 @@ public class Sort {
     
     //quicksort(arr, n);
 }*/
-    
+        /**
+        * Method that make quicksort operation
+        *
+        * @param array incoming array 
+        * @param wall left element
+        * @param high right element
+        */
 public <T extends Comparable<T>> void sort(CustomArrayList<T> array, int wall, int high) {      
 
         if (wall < 0 || high < 0 || wall > array.size() ||  high > array.size()||array.size() == 0){
@@ -43,7 +49,6 @@ public <T extends Comparable<T>> void sort(CustomArrayList<T> array, int wall, i
             return;}
         
         T pivot =  array.get(wall + (high - wall) / 2);
-
        
         int i = wall, j = high;
         while (i <= j) {
@@ -56,7 +61,7 @@ public <T extends Comparable<T>> void sort(CustomArrayList<T> array, int wall, i
             }
             
             if (i <= j) {
-                swap(array,i,j);
+                swap(array,i,j);//
                 i++;
                 j--;
             }
@@ -64,10 +69,18 @@ public <T extends Comparable<T>> void sort(CustomArrayList<T> array, int wall, i
         
         if (wall < j){
             sort(array, wall, j);}
-
+        //
         if (high > i){
             sort(array, i, high);}
     }
+
+    /**
+    * Util method for swaping value
+    *
+    * @param array incoming array 
+    * @param first first element
+    * @param high second element
+    */
     private<T> void swap(CustomArrayList array,int first,int second){
          T temp = (T) array.get(first);
                 array.set(first, array.get(second));

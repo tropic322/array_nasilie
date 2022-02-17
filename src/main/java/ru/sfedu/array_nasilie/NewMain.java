@@ -16,7 +16,7 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CustomArrayList a = new CustomArrayList();
+        //CustomArrayList a = new CustomArrayList();
         /*a.add(3);        
         a.add(1, 9);
         a.remove(0);
@@ -34,26 +34,25 @@ public class NewMain {
         a.add(3);
         a.add(5);
         a.add(5);*/
-        a.add("a.");
+        
+        /*a.add("a.");
         a.add("x.");
         a.add("c.");
         a.add("f.");
-        a.add("aaac.");
-        System.out.println(a.indexOf(8));
+        a.add("aaac.");*/
+        
+        //System.out.println(a.indexOf(8));
         
         //int[] aa= new int[] {6,5,1,3,8,4,7,9,2};
-        //m.boihelp( aa);
-        for(int i=0;i<9;i++)
-        {
-        //System.out.print(aa[i]);
-        }
-        a.sort();
-        System.out.println();
-        //m.quickSort(a,0,a.size());
+        //m.sort2( aa);
+        
+        //a.sort();
+        /*System.out.println();
+        
         for(int i=0;i<a.size();i++)
         {
         System.out.print(a.get(i));
-        }
+        }*/
     }
     
 }
