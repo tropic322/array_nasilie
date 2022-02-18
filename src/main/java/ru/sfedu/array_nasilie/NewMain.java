@@ -49,10 +49,7 @@ public class NewMain {
         //a.sort();
         /*System.out.println();
         
-        for(int i=0;i<a.size();i++)
-        {
-        System.out.print(a.get(i));
-        }*/
+        */
     }
     
 }

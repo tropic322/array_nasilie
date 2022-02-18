@@ -161,5 +161,47 @@ public class CustomArrayList<T extends Comparable<T>> {
         Sort s = new Sort();
         s.sort(this, 0, this.size() - 1);
     }
+    /**
+     * Check equality of two lists
+     * 
+     * @param b list for check
+     * @return true of false
+     */
+    public boolean equals(CustomArrayList b){
+        if(this.size()==b.size()){
+        for(int i=0;i<b.size();i++){
+            if(this.get(i).equals(b.get(i)))
+                return false;
+        }
+            }
+        else{
+            return false;
+        }
+        return true;
+    }
+    /**
+     * Print elements form list
+     * 
+     * 
+     */
+    public void print(){
+        for (int i = 0; i < this.size(); i++){
+            System.out.print(this.get(i)+" | ");
+        }
+        System.out.println();
+    }
+    /*public boolean compareTo(CustomArrayList b){
+     if(this.size()==b.size()){
+        for(int i=0;i<b.size();i++){
+            if(this.get(i).compareTo(b.get(i))!=0)
+                return false;
+        }
+            }
+        else{
+            return false;
+        }
+        return true;
+       // return name.compareTo(p.getName());
+    }*/
 }
 
