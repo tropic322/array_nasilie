@@ -8,6 +8,8 @@ package ru.sfedu.array_nasilie;
  *
  * @author Alexandr
  */
+import exceptions.IncorrectSizeException;
+import exceptions.IncorrectElementException;
 import ru.sfedu.array_nasilie.Sort;
 public class CustomArrayList<T extends Comparable<T>> {
         
@@ -29,7 +31,7 @@ public class CustomArrayList<T extends Comparable<T>> {
      */
     public CustomArrayList(int size) {
         if (size < 0 || size > Integer.MAX_VALUE-1)
-            return;
+            throw new IncorrectSizeException("Wrong size");
         customArray = new Object[size];
     }
 
@@ -39,6 +41,10 @@ public class CustomArrayList<T extends Comparable<T>> {
      * @param item an element used to be added to list
      */
     public void add(T item) {
+        if(item==null)
+        {
+           throw new IncorrectElementException("Element can not be null"); 
+        }
         if(elementQuantity == customArray.length-1){
             resize(customArray.length*2);
         }
@@ -52,9 +58,13 @@ public class CustomArrayList<T extends Comparable<T>> {
      * @param item  an element used to be added to list
      */
    public void add(int index, T item) {
+       if(item==null)
+        {
+           throw new IncorrectElementException("Element can not be null"); 
+        }
        if(index>elementQuantity||index<0)
        {
-          /// 
+          throw new IncorrectSizeException("Wrong size");
        }
        else{
         if(elementQuantity == customArray.length-1){
@@ -82,6 +92,8 @@ public class CustomArrayList<T extends Comparable<T>> {
      * @return an element from list of T type
      */
     public T get(int index) {
+        if (index < 0 || index > elementQuantity)
+            throw new IncorrectSizeException("Wrong size");
         return (T) customArray[index];
     }
     /**
@@ -91,10 +103,17 @@ public class CustomArrayList<T extends Comparable<T>> {
      * @param value new value
      */
     public void set(int index,T value) {
-      if(index>=0 && index<elementQuantity){
+        if(value==null)
+        {
+           throw new IncorrectElementException("element can not be null"); 
+        }
+        if(index>=0 && index<elementQuantity){
          customArray[index] = value; 
           
-      }
+        }
+        else{
+         throw new IncorrectSizeException("Wrong size"); 
+        }
    }
     
     /**
@@ -103,12 +122,16 @@ public class CustomArrayList<T extends Comparable<T>> {
      * @param index id of element for remove
      */
     public void remove(int index) {
-      for (int i = index; i<elementQuantity; i++) 
+        if(index>elementQuantity||index<0)
+        {
+           throw new IncorrectSizeException("Wrong size");
+        }
+        for (int i = index; i<elementQuantity; i++) 
         customArray[i] = customArray[i+1];
-      customArray[elementQuantity] = null;
-      elementQuantity--;
-      if (customArray.length > cupasity && elementQuantity < customArray.length / div) 
-         resize(customArray.length/2); 
+        customArray[elementQuantity] = null;
+        elementQuantity--;
+        if (customArray.length > cupasity && elementQuantity < customArray.length / div) 
+            resize(customArray.length/2); 
                                  
    }
     
@@ -144,7 +167,11 @@ public class CustomArrayList<T extends Comparable<T>> {
      * @param t element which index should be find
      * @return index of an element
      */
-    public int indexOf(Object t){
+    public int indexOf(T t){
+        if(t==null)
+        {
+           throw new IncorrectElementException("Element can not be null"); 
+        }
         for(int i=0;i<size();i++)
         {
             if(t.equals(get(i))){
@@ -170,7 +197,7 @@ public class CustomArrayList<T extends Comparable<T>> {
     public boolean equals(CustomArrayList b){
         if(this.size()==b.size()){
         for(int i=0;i<b.size();i++){
-            if(this.get(i).equals(b.get(i)))
+            if(this.get(i)!=b.get(i))
                 return false;
         }
             }

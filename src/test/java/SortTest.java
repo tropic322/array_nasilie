@@ -1,4 +1,5 @@
 
+import org.junit.Assert;
 import ru.sfedu.array_nasilie.CustomArrayList;
 import ru.sfedu.array_nasilie.Sort;
 
@@ -23,17 +24,9 @@ public class SortTest {
         a.add(5);
         a.sort();
         
-        CustomArrayList aa = new CustomArrayList();
-        aa.add(1);
-        aa.add(2);
-        aa.add(3);
-        aa.add(4);
-        aa.add(5);
-        aa.add(6);
-        aa.add(7);
-        aa.add(8);
-        aa.add(9);
-        assertTrue(a.equals(aa));
+        for (int i = 0; i < a.size()-1; i++){
+            Assert.assertTrue((int) a.get(i) < (int) a.get(i+1));
+        }
     }
     
    
