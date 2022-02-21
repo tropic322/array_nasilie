@@ -139,7 +139,7 @@ public class CustomArrayList<T extends Comparable<T>> implements CustomList<T> {
             resize(customArray.length/2); 
                                  
    }
-    
+    ///
     /**
      * Remove all elements from list
      */
