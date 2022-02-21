@@ -10,8 +10,7 @@ package ru.sfedu.array_nasilie;
  */
 import exceptions.IncorrectSizeException;
 import exceptions.IncorrectElementException;
-import ru.sfedu.array_nasilie.Sort;
-public class CustomArrayList<T extends Comparable<T>> {
+public class CustomArrayList<T extends Comparable<T>> implements CustomList<T> {
         
     /**
      * Constants
@@ -28,6 +27,7 @@ public class CustomArrayList<T extends Comparable<T>> {
 
     /**
      * Constructor
+     * @param size size of array
      */
     public CustomArrayList(int size) {
         if (size < 0 || size > Integer.MAX_VALUE-1)
@@ -40,6 +40,7 @@ public class CustomArrayList<T extends Comparable<T>> {
      *
      * @param item an element used to be added to list
      */
+    @Override
     public void add(T item) {
         if(item==null)
         {
@@ -57,6 +58,7 @@ public class CustomArrayList<T extends Comparable<T>> {
      * @param index on which place new element should be added
      * @param item  an element used to be added to list
      */
+    @Override
    public void add(int index, T item) {
        if(item==null)
         {
@@ -91,6 +93,7 @@ public class CustomArrayList<T extends Comparable<T>> {
      * @param index  id of searchable element
      * @return an element from list of T type
      */
+    @Override
     public T get(int index) {
         if (index < 0 || index > elementQuantity)
             throw new IncorrectSizeException("Wrong size");
@@ -102,6 +105,7 @@ public class CustomArrayList<T extends Comparable<T>> {
      * @param index index of an element which value should be changed
      * @param value new value
      */
+    @Override
     public void set(int index,T value) {
         if(value==null)
         {
@@ -121,6 +125,7 @@ public class CustomArrayList<T extends Comparable<T>> {
      *
      * @param index id of element for remove
      */
+    @Override
     public void remove(int index) {
         if(index>elementQuantity||index<0)
         {
@@ -138,10 +143,10 @@ public class CustomArrayList<T extends Comparable<T>> {
     /**
      * Remove all elements from list
      */
+    @Override
     public void clear() {
-        for (int i = 0; i<elementQuantity; i++) {
-            remove(i);
-        }
+        customArray = new Object[cupasity];
+        elementQuantity = 0;
     }
    
     /**
@@ -149,6 +154,7 @@ public class CustomArrayList<T extends Comparable<T>> {
      *
      * @return size of array
      */
+    @Override
     public int size() {
       return elementQuantity;
     }
@@ -167,6 +173,7 @@ public class CustomArrayList<T extends Comparable<T>> {
      * @param t element which index should be find
      * @return index of an element
      */
+    @Override
     public int indexOf(T t){
         if(t==null)
         {
@@ -184,6 +191,7 @@ public class CustomArrayList<T extends Comparable<T>> {
     /**
      * Sort this list
      */
+    @Override
     public void sort(){
         Sort s = new Sort();
         s.sort(this, 0, this.size() - 1);
@@ -194,24 +202,13 @@ public class CustomArrayList<T extends Comparable<T>> {
      * 
      * 
      */
+    @Override
     public void print(){
         for (int i = 0; i < this.size(); i++){
             System.out.print(this.get(i)+" | ");
         }
         System.out.println();
     }
-    /*public boolean compareTo(CustomArrayList b){
-     if(this.size()==b.size()){
-        for(int i=0;i<b.size();i++){
-            if(this.get(i).compareTo(b.get(i))!=0)
-                return false;
-        }
-            }
-        else{
-            return false;
-        }
-        return true;
-       // return name.compareTo(p.getName());
-    }*/
+    
 }
 

@@ -10,29 +10,7 @@ package ru.sfedu.array_nasilie;
  * @author Alexandr
  */
 public class Sort {
-    /*public int algoritmStradanie(int arr[], int start, int end) {
-    int pivot = arr[end];
-    int wall = (start-1);
-
-    for (int j = start; j < end; j++) {
-        if (arr[j] <= pivot) {
-            wall++;
-
-            int swapTemp = arr[wall];// 
-            arr[wall] = arr[j];
-            arr[j] = swapTemp;
-        }
-    }
-
-    int swapTemp = arr[wall+1];
-    arr[wall+1] = arr[end];
-    arr[end] = swapTemp;
-
-    return wall+1;
-    //quicksort(arr, wall);
     
-    //quicksort(arr, n);
-}*/
         /**
         * Method that make quicksort operation
         *
