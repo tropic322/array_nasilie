@@ -42,10 +42,7 @@ public class CustomArrayList<T extends Comparable<T>> implements CustomList<T> {
      */
     @Override
     public void add(T item) {
-        if(item==null)
-        {
-           throw new IncorrectElementException("Element can not be null"); 
-        }
+        checkIncorrectElement(item);
         if(elementQuantity == customArray.length-1){
             resize(customArray.length*2);
         }
@@ -60,15 +57,9 @@ public class CustomArrayList<T extends Comparable<T>> implements CustomList<T> {
      */
     @Override
    public void add(int index, T item) {
-       if(item==null)
-        {
-           throw new IncorrectElementException("Element can not be null"); 
-        }
-       if(index>elementQuantity||index<0)
-       {
-          throw new IncorrectSizeException("Wrong size");
-       }
-       else{
+       checkIncorrectElement(item);
+       checkIncorrectSize(index);
+       
         if(elementQuantity == customArray.length-1){
          resize(customArray.length*2);
         }
@@ -85,7 +76,7 @@ public class CustomArrayList<T extends Comparable<T>> implements CustomList<T> {
         System.arraycopy(customArray, 0, customArray1, 0, elementQuantity);
         elementQuantity++;
      //customArray[elementQuantity++] = item;
-       }
+       
    }
     /**
      * Get element from list by id
@@ -95,8 +86,7 @@ public class CustomArrayList<T extends Comparable<T>> implements CustomList<T> {
      */
     @Override
     public T get(int index) {
-        if (index < 0 || index > elementQuantity)
-            throw new IncorrectSizeException("Wrong size");
+        checkIncorrectSize(index);
         return (T) customArray[index];
     }
     /**
@@ -106,18 +96,13 @@ public class CustomArrayList<T extends Comparable<T>> implements CustomList<T> {
      * @param value new value
      */
     @Override
-    public void set(int index,T value) {
-        if(value==null)
-        {
-           throw new IncorrectElementException("element can not be null"); 
-        }
-        if(index>=0 && index<elementQuantity){
-         customArray[index] = value; 
+    public void set(int index,T item) {
+        checkIncorrectElement(item);
+        checkIncorrectSize(index);
+        
+         customArray[index] = item; 
           
-        }
-        else{
-         throw new IncorrectSizeException("Wrong size"); 
-        }
+        
    }
     
     /**
@@ -127,10 +112,7 @@ public class CustomArrayList<T extends Comparable<T>> implements CustomList<T> {
      */
     @Override
     public void remove(int index) {
-        if(index>elementQuantity||index<0)
-        {
-           throw new IncorrectSizeException("Wrong size");
-        }
+        checkIncorrectSize(index);
         for (int i = index; i<elementQuantity; i++) 
         customArray[i] = customArray[i+1];
         customArray[elementQuantity] = null;
@@ -174,14 +156,11 @@ public class CustomArrayList<T extends Comparable<T>> implements CustomList<T> {
      * @return index of an element
      */
     @Override
-    public int indexOf(T t){
-        if(t==null)
-        {
-           throw new IncorrectElementException("Element can not be null"); 
-        }
+    public int indexOf(T item){
+        checkIncorrectElement(item);
         for(int i=0;i<size();i++)
         {
-            if(t.equals(get(i))){
+            if(item.equals(get(i))){
             return i; 
         }
     }
@@ -209,6 +188,19 @@ public class CustomArrayList<T extends Comparable<T>> implements CustomList<T> {
         }
         System.out.println();
     }
-    
+    private void checkIncorrectElement(T item){
+        if(item==null)
+        {
+           throw new IncorrectElementException("Element can not be null"); 
+        }
+        
+    }
+    private void checkIncorrectSize(int index){
+        if(index>elementQuantity||index<0)
+        {
+           throw new IncorrectSizeException("Wrong size");
+        }
+        
+    }
 }
 
