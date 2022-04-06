@@ -16,6 +16,8 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        String color ="asd";
+        System.out.println(color.getClass().getSimpleName());
         //CustomArrayList a = new CustomArrayList();
         /*a.add(3);        
         a.add(1, 9);
